@@ -1,0 +1,26 @@
+
+<%- include('partials/_header') %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 p-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/modificar/<%= id %>"  method="POST">
+                        <div class="form-group">
+                            <h5 class="display-5">Modifica la tarea</h5>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="title" placeholder="titulo de la tarea" 
+                            value="<%= title %>">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="description" cols="80" style="height: 200px;" placeholder="ingresa una descripcion" > <%= description %> </textarea>
+                        </div>
+                        <button type="submit" class="btn btn-info btn-block">Modificar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/_footer') %>

@@ -1,0 +1,59 @@
+<%- include('partials/_header') %>
+<!-- <pre>
+    <%= tasks %>
+</pre> -->
+<nav class="navbar navbar-dark bg-dark mb-4">
+        <a href="/" class="navbar-brand">Crud usando Nodejs y mongodb</a>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <!--FORMULARIO-->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add"  method="POST">
+                            <div class="form-group">
+                                <h5 class="display-5">Ingresa una tarea</h5>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="title" placeholder="titulo de la tarea">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="description" cols="80" style="height: 300px;" placeholder="ingresa una descripcion" ></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Añadir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--LISTA-->
+            <div class="col-md-8">
+                <table class="table table-bordered table-hover">
+                    <thead class="">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Titulo</th>
+                            <th class="text-center">Descripcion</th>
+                            <th class="text-center">Operacion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i < tasks.length; i++) {%>
+                            <tr>
+                                <td class="text-center"><%= i + 1 %></td>
+                                <td class="text-center"><%= tasks[i].title %></td>
+                                <td class="text-center"><%= tasks[i].description %></td>
+                                <td class="text-center">
+                                    <a href="/hecho/<%= tasks[i]._id %>" 
+                                        class="btn <%= tasks[i].status ? 'btn-success' : 'btn-dark' %>" >Hecho</a>
+                                    <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger">Eliminar</a>
+                                    <a href="/update/<%= tasks[i]._id %>" class="btn btn-warning ">Modificar</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<%- include('partials/_footer') %>
